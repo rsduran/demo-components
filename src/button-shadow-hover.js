@@ -1,6 +1,5 @@
 import React from 'react';
-import { ChakraProvider, extendTheme, Box } from '@chakra-ui/react';
-import CopyReferralButton from './CopyReferralButton';
+import { ChakraProvider, extendTheme, Box, Button } from '@chakra-ui/react';
 import '@fontsource-variable/karla/wght.css';
 
 const theme = extendTheme({
@@ -8,43 +7,28 @@ const theme = extendTheme({
     body: '"Karla Variable", sans-serif',
   },
   components: {
-    CopyReferralButton: {
-      baseStyle: {
-        display: 'inline-flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        userSelect: 'none',
-        position: 'relative',
-        whiteSpace: 'nowrap',
-        verticalAlign: 'middle',
-        outline: 'transparent solid 2px',
-        outlineOffset: '2px',
-        lineHeight: '19px',
-        borderWidth: '1px',
-        borderStyle: 'solid',
-        borderColor: 'black',
-        transition: '0.3s',
-        height: '48px',
-        fontSize: '16px',
-        paddingInlineStart: '24px',
-        paddingInlineEnd: '24px',
-        backgroundColor: '#abf701',
-        color: 'rgb(0, 0, 0)',
-        width: 'auto',
-        borderRadius: 'full',
-        textTransform: 'uppercase',
-        fontWeight: 700,
-        fontFamily: '"Karla Variable", sans-serif',
-        fontStyle: 'normal',
-        boxShadow: 'none', // Remove initial shadow
-        _hover: {
-          boxShadow: '0 4px 0 0 black', // Add shadow on hover
+    Button: {
+      variants: {
+        referralStatic: {
+          height: '48px',
+          fontSize: '16px',
+          px: '24px',
+          bg: '#abf701',
+          color: 'black',
+          borderRadius: 'full',
+          border: '1px solid black',
+          fontWeight: 700,
+          textTransform: 'uppercase',
+          boxShadow: '0 4px 0 0 black',
         },
-        // Remove _active styles to disable clicking animation
       },
     },
   },
 });
+
+const CopyReferralButton = (props) => (
+  <Button variant="referralStatic" {...props} />
+);
 
 function App() {
   return (
